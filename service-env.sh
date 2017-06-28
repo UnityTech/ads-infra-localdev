@@ -23,7 +23,6 @@ if [ -z "$ACTION" ] ; then
   echo "Usage: ./service-env.sh [setup|sync|teardown]"
   exit 13
 fi
-# On a similar note, only sync will require a service name :-)
 
 function get_endpoint_ip() {
   SERVICE=$1
@@ -40,16 +39,6 @@ function setup {
 
   # If there's anything running at all at this point, let's also setup the env vars, why not?
   sync
-}
-
-function apply {
-  SERVICE=$1
-  if [ -z "$SERVICE" ] ; then
-    echo "Please specify a service. I don't want to apply them all :-/"
-    echo "Usage: ./dev-cluster.sh [setup|sync <service_name>|teardown]"
-    exit 13
-  fi
-  kubectl create -f services/$SERVICE/*.yaml
 }
 
 function sync {
