@@ -83,6 +83,7 @@ if [ $ACTION == "sync" ] ; then
 fi
 if [ $ACTION == "teardown" ] ; then
   teardown
+  exit
 fi
 
 
@@ -97,3 +98,4 @@ bash
 if [ "$?" != "0" ] ; then
   /bin/bash
 fi
+# TODO: Find another way to prevent session nesting after multiple actions are ran

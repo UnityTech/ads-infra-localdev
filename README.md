@@ -21,16 +21,15 @@ and a service called *test* exposing it on TCP 80. Go ahead and setup both the m
 manifest:
 
 ```
-$ bash
-bash-3.2$ cd ads-infra-localdev
-bash-3.2$ minikube start
-bash-3.2$ kubectl create -f local.yaml
+$ cd ads-infra-localdev
+$ minikube start
+$ kubectl create -f local.yaml
 ```
 
 You are ready to now tweak your minikube to expose and access its services by sourcing *service-env.sh*:
 
 ```
-bash-3.2$ source service-env.sh setup
+$ ./service-env.sh setup
 Setting up KUBERNETES_HTTPS - 10.0.2.15:443
 Setting up TEST_HTTP - 172.17.0.3:80
 ```
@@ -39,7 +38,7 @@ At this point the service *test* exposing a port called *http* is exposed as $TE
 will be routed to the proxy running in the minikube VM. Let's try to reach it:
 
 ```
-bash-3.2$ curl $TEST_HTTP
+$ curl $TEST_HTTP
 OK
 ```
 
@@ -48,8 +47,7 @@ You can at any moment refresh the variables, typically if you deploy or modify y
 
 ### Caveats
 
-The *service-env.sh* script will require *root* access and must be sourced in a bash shell. Please make sure
-to first source with the *teardown* command before scrapping the minikube.
+ Please make sure to first source with the *teardown* command before scrapping the minikube.
 
 ### Support
 
