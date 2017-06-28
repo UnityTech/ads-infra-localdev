@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ACTION=$1
 
 # Actions : 
@@ -83,4 +85,15 @@ if [ $ACTION == "teardown" ] ; then
   teardown
 fi
 
- 
+
+# This is bad. But it could be worse (look at the repo's very first commit working state - disaster in OSX)
+#  What we're doing here is pretty much giving the user a sub-shell from our script (which is already a sub-shell of the session running it)
+#    Not great as you "lose" the history, but is the only sane way that we can enforce BASH syntax. If you want to keep the history uncomment below :
+#history -w
+
+# This assumes that bash is in the $PATH. Sometimes better than assuming full path
+bash
+# Just a protection/last resort guessing if bash is not in $PATH :
+if [ "$?" != "0" ] ; then
+  /bin/bash
+fi
