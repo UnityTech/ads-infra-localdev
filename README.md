@@ -49,7 +49,7 @@ You can at any moment refresh the variables, typically if you deploy or modify y
 
  Please make sure to first source with the *teardown* command before scrapping the minikube.
  
- This will work best if we $ start minikube --extra-config=apiserver.ServiceNodePortRange=1000-40000
+ This will work best if we $ minikube start --extra-config=apiserver.ServiceNodePortRange=1000-40000
 
 ### Support
 
